@@ -9,7 +9,7 @@ function GameOver() {
     return (
         <div className="game-over">
             <h1>GAME OVER</h1>
-            <button onClick={() => navigate("./Board"}>
+            <button onClick={() => navigate("/")}>
             TRY AGAIN
             </button>
 

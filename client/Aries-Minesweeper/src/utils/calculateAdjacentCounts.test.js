@@ -15,6 +15,9 @@ describe("Testing for counting neighbor cells with mines", () => {
         });
     });
     test("Cells with no bomb have correct adjacent counts", () => {
+        board.flat().forEach(cell => {
+            cell.isBomb = false
+        });
         board[1][1].isBomb = true;
         calculateAdjacentCounts(board);
         expect(board[0][0].adjacentCount).toBe(1);

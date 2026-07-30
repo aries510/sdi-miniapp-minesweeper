@@ -10,11 +10,11 @@ export function calculateAdjacentCounts(board) {
             if(currentCell.isBomb) {
                 currentCell.adjacentCount = 0
             };
-            const allNeighbors = getAdjacentCells();
+            const allNeighbors = getAdjacentCells(board, row, column);
             let counter = 0;
-            for(let i = 0; allNeighbors.length; i++) {
-                if(allNeighbors.isBomb) {
-                    counter++
+            for(let i = 0; i < allNeighbors.length; i++) {
+                if(allNeighbors[i].isBomb) {
+                    counter++;
                 };
             };
             currentCell.adjacentCount = counter;

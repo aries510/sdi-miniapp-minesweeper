@@ -7,7 +7,16 @@ const StyledImg = styled.img`
     width: 20px;
     height 20px;
     pointer-events: none;
-`
+`;
+const StyledCell = styled.div`
+    width: 32px;
+    height: 32px;
+    border: 1px solid #444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+`;
 
 
 function Cell({ cell, row, column, onClick }) {
@@ -25,9 +34,9 @@ function Cell({ cell, row, column, onClick }) {
 
     return (
         <>
-            <div onClick={() => onClick(row, column)}>
+            <StyledCell onClick={() => onClick(row, column)}>
                 { displayValue }
-            </div>
+            </StyledCell>
         </>
     )
 }

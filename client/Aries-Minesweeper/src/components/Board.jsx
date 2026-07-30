@@ -4,6 +4,15 @@ import { placeMines } from "../utils/placeMines";
 import { calculateAdjacentCounts } from "../utils/calculateAdjacentCounts";
 import { revealCells } from "../utils/revealCells";
 import Cell from "./Cell";
+import styled from "styled-components";
+
+const BoardWrapper = styled.div`
+    display: inline-block;
+`;
+
+const Row = styled.div`
+    display: flex;
+`;
 
 function Board() {
     const [board, setBoard] = useState([]);
@@ -21,10 +30,10 @@ function Board() {
     };
 
     return (
-        <div className="board">
+        <BoardWrapper className="board">
             {board.map((row, rowIndex) => {
                 return (
-                    <div key={ rowIndex } className="board-row">
+                    <Row key={ rowIndex } className="board-row">
                         {row.map((cell, columnIndex) => {
                             return (
                                 <Cell
@@ -36,10 +45,10 @@ function Board() {
                                 />
                             );
                         })}
-                    </div>
+                    </Row>
                 );
             })}
-        </div>
+        </BoardWrapper>
     );
 };
 

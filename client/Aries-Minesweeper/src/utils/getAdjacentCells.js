@@ -16,12 +16,12 @@ export function getAdjacentCells(board, row, column) {
     ];
 
     for(let i = 0; i < possibleNeighborPositions.length; i++) {
-        for(let j = 0; j < rows; j++) {
-            let offsetRow =+ rows;
-            for(let k = 0; k < columns; k++) {
-                let offsetColumn =+ columns;
-                if()
-            }
+        const [offsetRow, offsetColumn] = possibleNeighborPositions[i];
+        const neighborRow = offsetRow + row;
+        const neighborColumn = offsetColumn + column;
+        if(neighborRow >= 0 && neighborRow < rows && neighborColumn >= 0 && neighborColumn < columns) {
+            neighbors.push(board[neighborRow][neighborColumn])
         }
     }
+    return neighbors
 };

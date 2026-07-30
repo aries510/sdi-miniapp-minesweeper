@@ -5,6 +5,7 @@ import { calculateAdjacentCounts } from "../utils/calculateAdjacentCounts";
 import { revealCells } from "../utils/revealCells";
 import Cell from "./Cell";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const BoardWrapper = styled.div`
     display: inline-block;
@@ -16,6 +17,7 @@ const Row = styled.div`
 
 function Board() {
     const [board, setBoard] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const initialBoard = generateBoard();
@@ -25,7 +27,12 @@ function Board() {
     }, []);
 
     const cellClickHandler = (row, column) => {
-        if(board[row][column].isFlagged){
+        const currentCell = board[row][column];
+        if(currentCell.isFlagged){
+            return
+        };
+        if(currentCell.isBomb) {
+            navigate("./GameOver");
             return
         };
         const clickedCellRevealed = revealCells(board, row, column);

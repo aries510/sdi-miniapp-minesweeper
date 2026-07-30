@@ -21,25 +21,26 @@ function Board() {
     };
 
     return (
-        <>
-            <div className="board">
-                {board.map((row, rowIndex) => {
+        <div className="board">
+            {board.map((row, rowIndex) => {
+                return (
                     <div key={ rowIndex } className="board-row">
                         {row.map((cell, columnIndex) => {
-                            <Cell
-                                key={ columnIndex }
-                                cell={ cell }
-                                row={ rowIndex }
-                                column={ columnIndex }
-                                onClick={ cellClickHandler }
-                            />
+                            return (
+                                <Cell
+                                    key={ columnIndex }
+                                    cell={ cell }
+                                    row={ rowIndex }
+                                    column={ columnIndex }
+                                    onClick={ cellClickHandler }
+                                />
+                            );
                         })}
                     </div>
-                })}
-            </div>
-        
-        </>
-    )
+                );
+            })}
+        </div>
+    );
 };
 
 export default Board;

@@ -1,9 +1,9 @@
 import React from "react";
 import Board from "./Board";
 import explosionIcon from "../assets/explosionIcon.png";
-import styled from `styled-components`
+import styled from "styled-components"
 
-const StyledImg = style.img`
+const StyledImg = styled.img`
     width: 20px;
     height 20px;
     pointer-events: none;
@@ -25,7 +25,9 @@ function Cell({ cell, row, column, onClick }) {
 
     return (
         <>
-            <div onClick={() => onClick(row, column)}></div>
+            <div onClick={() => onClick(row, column)}>
+                { displayValue }
+            </div>
         </>
     )
 }

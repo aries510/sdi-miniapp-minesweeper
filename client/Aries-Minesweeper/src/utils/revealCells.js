@@ -12,12 +12,13 @@ export function revealCells(board, row, column) {
     if(currentCell.adjacentCount > 0) {
         return board
     };
-    if(currentCell.adjacentCount === 0) {
-        const allNeighbors = getAdjacentCells(board, row, column);
-        for(let i = 0; i < allNeighbors.length; i++) {
-            if(!allNeighbors[i].isRevealed) {
-                revealCells(board, allNeighbors[i].row, allNeighbors[i].column)
-            };
+    const allNeighbors = getAdjacentCells(board, row, column);
+    for(let neighbors of allNeighbors) {
+        if(!neighbors.isRevealed && neighbors.adjacentCount === 0) {
+            revealCells(board, neighbors.row, neighbors.column);
+        };
+        if(!neighbors.isRevealed && neighbors.adjacentCount > 0) {
+            neighbors.isRevealed = true;
         };
     };
     return board

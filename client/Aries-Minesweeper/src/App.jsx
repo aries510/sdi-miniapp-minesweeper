@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import Board from './components/Board';
 
 function App() {
@@ -9,8 +9,8 @@ function App() {
     <>
       <Routes>
         <Route path='/' element={<Board />}/>
-        <Route path='/gameover' element={<GameOver />}/>
-        <Route path='/win' element={<WinScreen />}/>
+        {/* <Route path='/gameover' element={<GameOver />}/> */}
+        {/* <Route path='/win' element={<WinScreen />}/> */}
       </Routes>
     </>
   )

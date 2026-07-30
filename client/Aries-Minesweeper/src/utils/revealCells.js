@@ -5,7 +5,7 @@ export function revealCells(board, row, column) {
     if(currentCell.isRevealed) {
         return board
     };
-    currentCell.isRevealed === true;
+    currentCell.isRevealed = true;
     if(currentCell.isBomb) {
         return board
     };
@@ -16,7 +16,7 @@ export function revealCells(board, row, column) {
         const allNeighbors = getAdjacentCells(board, row, column);
         for(let i = 0; i < allNeighbors.length; i++) {
             if(!allNeighbors[i].isRevealed) {
-                revealCells(board, allNeighbors.row, allNeighbors.column)
+                revealCells(board, allNeighbors[i].row, allNeighbors[i].column)
             };
         };
     };

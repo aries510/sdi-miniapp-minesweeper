@@ -17,7 +17,7 @@ export function generateBoard(rows = 10, columns = 10) {
                 isBomb: false,
                 isRevealed: false,
                 adjacentCount: 0,
-                isFlagged: false
+                isFlagged: false,
             });
         }
         board.push(row);

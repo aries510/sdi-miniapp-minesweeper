@@ -25,8 +25,20 @@ function Board() {
     }, []);
 
     const cellClickHandler = (row, column) => {
+        if(board[row][column].isFlagged){
+            return
+        };
         const clickedCellRevealed = revealCells(board, row, column);
         setBoard([...clickedCellRevealed])
+    };
+
+    const flagCellClickHandler = (row, column, rightClick) => {
+        rightClick.preventDefault();
+        if(cell.isRevealed){
+            return
+        }
+        const flaggedCell = board[row][column].isFlagged = true;
+        setBoard([...flaggedCell])
     };
 
     return (
@@ -42,6 +54,7 @@ function Board() {
                                     row={ rowIndex }
                                     column={ columnIndex }
                                     onClick={ cellClickHandler }
+                                    onRightClick={ flagCellClickHandler }
                                 />
                             );
                         })}

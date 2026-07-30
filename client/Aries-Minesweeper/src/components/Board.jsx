@@ -34,11 +34,13 @@ function Board() {
 
     const flagCellClickHandler = (row, column, rightClick) => {
         rightClick.preventDefault();
+        const currentBoard = [...board];
+        const cell = currentBoard[row][column];
         if(cell.isRevealed){
             return
         }
-        const flaggedCell = board[row][column].isFlagged = true;
-        setBoard([...flaggedCell])
+        cell.isFlagged = !cell.isFlagged
+        setBoard([...currentBoard])
     };
 
     return (

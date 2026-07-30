@@ -1,6 +1,13 @@
 import React from "react";
 import Board from "./Board";
 import explosionIcon from "../assets/explosionIcon.png";
+import styled from `styled-components`
+
+const StyledImg = style.img`
+    width: 20px;
+    height 20px;
+    pointer-events: none;
+`
 
 
 function Cell({ cell, row, column, onClick }) {

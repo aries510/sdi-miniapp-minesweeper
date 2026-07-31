@@ -3,7 +3,7 @@ import { generateBoard } from "../utils/generateBoard";
 import { placeMines } from "../utils/placeMines";
 import { calculateAdjacentCounts } from "../utils/calculateAdjacentCounts";
 import { revealCells } from "../utils/revealCells";
-import Cell from "./Cell";
+import Cell, { GameOverBanner } from "./Cell";
 import styled from "styled-components";
 
 const BoardContainer = styled.div`
@@ -92,7 +92,7 @@ function Board({restart}) {
         <BoardWrapper className="game-board">
             {gameOver && (
                 <div>
-                    <h1>GAME OVER</h1>
+                    <GameOverBanner>GAME OVER</GameOverBanner>
                     <button onClick={restart}>TRY AGAIN</button>
                 </div>
             )}

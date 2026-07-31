@@ -105,17 +105,7 @@ const StyledImg = styled.img`
     height 20px;
     pointer-events: none;
 `;
-const StyledCell = styled.div`
-    width: 32px;
-    height: 32px;
-    border: 1px solid #444;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
 
-    background-color: ${props => props.$revealed ? "#ddd" : "#999"};
-`;
 
 
 function Cell({ cell, row, column, onClick, onRightClick }) {

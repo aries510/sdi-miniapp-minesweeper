@@ -6,6 +6,21 @@ import { revealCells } from "../utils/revealCells";
 import Cell from "./Cell";
 import styled from "styled-components";
 
+const BoardContainer = styled.div`
+  background: ${({ theme }) => theme.whiteArmor};
+  padding: 20px;
+  border-radius: 8px;
+
+  box-shadow:
+    inset 0 0 0 2px ${({ theme }) => theme.panelLine},
+    inset 0 0 20px ${({ theme }) => theme.metalGray};
+
+  background-image: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.1) 0%,
+    rgba(0,0,0,0.05) 100%
+  );
+`;
 
 const BoardWrapper = styled.div`
     display: inline-block;

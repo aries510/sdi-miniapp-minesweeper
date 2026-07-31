@@ -18,7 +18,7 @@ const StyledCell = styled.div`
     justify-content: center;
     cursor: pointer;
 
-    background-color: ${props=> props.revealed ? "#ddd" : "#999"};
+    background-color: ${props => props.$revealed ? "#ddd" : "#999"};
 `;
 
 
@@ -42,7 +42,7 @@ function Cell({ cell, row, column, onClick, onRightClick }) {
         <>
             <StyledCell 
                 onClick={() => onClick(row, column)} 
-                revealed= {cell.isRevealed} 
+                $revealed = {cell.isRevealed} 
                 onContextMenu={(rightClick) => onRightClick(row, column, rightClick)}
             >
                 { displayValue }

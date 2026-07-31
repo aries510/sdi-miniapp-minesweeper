@@ -5,7 +5,7 @@ import { calculateAdjacentCounts } from "../utils/calculateAdjacentCounts";
 import { revealCells } from "../utils/revealCells";
 import Cell from "./Cell";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+
 
 const BoardWrapper = styled.div`
     display: inline-block;
@@ -13,11 +13,12 @@ const BoardWrapper = styled.div`
 
 const Row = styled.div`
     display: flex;
-`;
+    `;
 
-function Board() {
+function Board({restart}) {
     const [board, setBoard] = useState([]);
-    const navigate = useNavigate();
+    const [gameOver, setGameOver] = useState(false);
+    const [gameWon, setGameWon] = useState(false);
 
     useEffect(() => {
         const initialBoard = generateBoard();
@@ -26,23 +27,44 @@ function Board() {
         setBoard(initialBoard);
     }, []);
 
+    const winCondition = (board) => {
+        for(let row of board) {
+            for(let cell of row) {
+                if(!cell.isBomb && !cell.isRevealed) {
+                    return false
+                };
+            };
+        };
+        return true
+    };
+
     const cellClickHandler = (row, column) => {
         const currentCell = board[row][column];
+        const clickedCellRevealed = revealCells(board, row, column);
+        if(gameOver === true || gameWon === true){
+            return
+        };
         if(currentCell.isFlagged){
             return
         };
         if(currentCell.isBomb) {
-            navigate("./GameOver");
+            setBoard([...clickedCellRevealed])
+            setGameOver(true)
             return
         };
-        const clickedCellRevealed = revealCells(board, row, column);
-        setBoard([...clickedCellRevealed])
+        setBoard([...clickedCellRevealed]);
+        if(winCondition(board)) {
+            setGameWon(true)
+        };
     };
 
     const flagCellClickHandler = (row, column, rightClick) => {
         rightClick.preventDefault();
         const currentBoard = [...board];
         const cell = currentBoard[row][column];
+        if(gameOver === true || gameWon === true) {
+            return
+        };
         if(cell.isRevealed){
             return
         }
@@ -51,7 +73,19 @@ function Board() {
     };
 
     return (
-        <BoardWrapper className="board">
+        <BoardWrapper className="game-board">
+            {gameOver && (
+                <div>
+                    <h1>GAME OVER</h1>
+                    <button onClick={restart}>TRY AGAIN</button>
+                </div>
+            )}
+            {gameWon && (
+                <div>
+                    <h1>WINNER</h1>
+                    <button onClick={restart}>NEW GAME</button>
+                </div>
+            )}
             {board.map((row, rowIndex) => {
                 return (
                     <Row key={ rowIndex } className="board-row">
@@ -68,7 +102,7 @@ function Board() {
                             );
                         })}
                     </Row>
-                );
+                )
             })}
         </BoardWrapper>
     );

@@ -2,15 +2,14 @@ import { useState } from 'react'
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
 import Board from './components/Board';
-import GameOver from './components/GameOver';
 
 function App() {
+    const [gameId, setGameId] = useState(0)
 
   return (
     <>
       <Routes>
-        <Route path='/' element={<Board />}/>
-        <Route path='/gameover' element={<GameOver />}/>
+        <Route path='/' element={<Board key={ gameId } restart={() => setGameId(gameId + 1)}/>}/>
         {/* <Route path='/win' element={<WinScreen />}/> */}
       </Routes>
     </>

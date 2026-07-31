@@ -88,6 +88,7 @@ function Board({restart}) {
     };
 
     return (
+        <BoardContainer>
         <BoardWrapper className="game-board">
             {gameOver && (
                 <div>
@@ -120,6 +121,7 @@ function Board({restart}) {
                 )
             })}
         </BoardWrapper>
+        </BoardContainer>
     );
 };
 

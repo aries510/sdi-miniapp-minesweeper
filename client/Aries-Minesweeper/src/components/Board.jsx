@@ -6,6 +6,15 @@ import { revealCells } from "../utils/revealCells";
 import Cell, { GameOverBanner } from "./Cell";
 import styled from "styled-components";
 
+const CenterWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;     /* centers horizontally */
+  justify-content: center; /* centers vertically if height is set */
+  width: 100%;
+  margin-top: 40px;        /* spacing from top */
+`;
+
 const BoardContainer = styled.div`
   background: ${({ theme }) => theme.whiteArmor};
   padding: 20px;
@@ -24,10 +33,14 @@ const BoardContainer = styled.div`
 
 const BoardWrapper = styled.div`
     display: inline-block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `;
 
 const Row = styled.div`
     display: flex;
+    justify-content: center;
     `;
 
 function Board({restart}) {
@@ -88,6 +101,7 @@ function Board({restart}) {
     };
 
     return (
+      <CenterWrapper>
         <BoardContainer>
         <BoardWrapper className="game-board">
             {gameOver && (
@@ -122,6 +136,7 @@ function Board({restart}) {
             })}
         </BoardWrapper>
         </BoardContainer>
+      </CenterWrapper>
     );
 };
 

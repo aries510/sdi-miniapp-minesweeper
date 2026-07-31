@@ -3,7 +3,7 @@ import { generateBoard } from "../utils/generateBoard";
 import { placeMines } from "../utils/placeMines";
 import { calculateAdjacentCounts } from "../utils/calculateAdjacentCounts";
 import { revealCells } from "../utils/revealCells";
-import Cell, { GameOverBanner } from "./Cell";
+import Cell, { GameOverBanner, WinBanner } from "./Cell";
 import styled from "styled-components";
 
 const CenterWrapper = styled.div`
@@ -105,16 +105,16 @@ function Board({restart}) {
         <BoardContainer>
         <BoardWrapper className="game-board">
             {gameOver && (
-                <div>
-                    <GameOverBanner>GAME OVER</GameOverBanner>
+                <GameOverBanner>
+                        <h1>GAME OVER</h1>
                     <button onClick={restart}>TRY AGAIN</button>
-                </div>
+                </GameOverBanner>
             )}
             {gameWon && (
-                <div>
+                <WinBanner>
                     <h1>WINNER</h1>
                     <button onClick={restart}>NEW GAME</button>
-                </div>
+                </WinBanner>
             )}
             {board.map((row, rowIndex) => {
                 return (

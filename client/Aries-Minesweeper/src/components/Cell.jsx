@@ -67,6 +67,8 @@ export const StyledCell = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: bold;
+  text-shadow: 0 0 2px rgba(0,0,0,0.4);
 
   cursor: pointer;
   user-select: none;
@@ -95,7 +97,7 @@ export const StyledCell = styled.div`
       case 6: return theme.psychGreen;
       case 7: return theme.darkFrame;
       case 8: return theme.metalGray;
-      default: return theme.uiText;
+      default: return theme.darkFrame;
     }
   }};
 `;
